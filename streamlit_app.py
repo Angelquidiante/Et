@@ -1,16 +1,17 @@
-import streamlit as st
-import pandas as pd
+# Encabezado de la aplicación
+st.title('Análisis de Datos con Streamlit')
 
-# Título de la aplicación
-st.title('Visualización de Datos CSV con Streamlit')
+# Mostrar los datos del archivo CSV
+st.write("### Datos del archivo CSV")
+st.write(df)  # Mostrar el DataFrame en Streamlit
 
-# Cargar el archivo CSV
-archivo_csv = st.file_uploader("Cargar archivo CSV", type=['csv'])
+# Ejemplo de análisis interactivo (puedes personalizar esto según tus necesidades)
+st.write("### Resumen Estadístico")
+st.write(df.describe())  # Mostrar estadísticas descriptivas básicas
 
-if archivo_csv is not None:
-    # Leer el archivo CSV
-    df = pd.read_csv(archivo_csv)
+# Gráfico interactivo (ejemplo de gráfico de barras)
+st.write("### Gráfico de Barras de una Columna")
+column = st.selectbox('Selecciona una columna para graficar:', df.columns)
+st.bar_chart(df[column])
 
-    # Mostrar el DataFrame en Streamlit
-    st.write("Datos del CSV:")
-    st.write(df)
+# Otros tipos de gráficos y análisis según sea necesario
